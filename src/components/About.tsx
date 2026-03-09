@@ -1,0 +1,63 @@
+import React, { useEffect } from 'react';
+import { useScrollAnimation, useCountUp } from '../hooks/useScrollAnimation';
+import aboutImage from '../assets/about.jpg';
+
+const About: React.FC = () => {
+  const { ref, isVisible } = useScrollAnimation();
+  const students = useCountUp(500);
+  const programs = useCountUp(15);
+  const years = useCountUp(10);
+
+  useEffect(() => {
+    if (isVisible) {
+      students.start();
+      programs.start();
+      years.start();
+    }
+  }, [isVisible]);
+
+  return (
+    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800 bg-pattern relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-5xl font-bold text-gray-800 dark:text-white mb-6">About Ineza Foundation</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Dedicated to transforming lives through sustainable development and education initiatives
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className={`bg-accent/20 h-96 rounded-lg overflow-hidden hover:scale-105 transition-all duration-1000 border-2 border-accent ${isVisible ? 'opacity-100 -translate-x-0' : 'opacity-0 -translate-x-20'}`}>
+            <img src={aboutImage} alt="About Ineza Foundation" className="w-full h-full object-cover" />
+          </div>
+          <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}>
+            <h3 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">Our Mission</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              The Ineza Foundation is committed to creating lasting change in communities across Rwanda. We believe that education is the key to breaking the cycle of poverty and building a prosperous future.
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              Through our comprehensive programs, we provide access to quality education, healthcare services, and economic opportunities that empower individuals and strengthen communities.
+            </p>
+            <div ref={ref} className="grid grid-cols-3 gap-6 mt-8">
+              <div className="text-center hover:scale-110 transition-transform duration-300 cursor-pointer">
+                <div className="text-4xl font-bold text-primary bg-white dark:bg-gray-700 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-2 shadow-lg">{students.count}+</div>
+                <div className="text-gray-600 dark:text-gray-400 mt-2 font-semibold">Students</div>
+              </div>
+              <div className="text-center hover:scale-110 transition-transform duration-300 cursor-pointer">
+                <div className="text-4xl font-bold text-primary bg-white dark:bg-gray-700 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-2 shadow-lg">{programs.count}+</div>
+                <div className="text-gray-600 dark:text-gray-400 mt-2 font-semibold">Programs</div>
+              </div>
+              <div className="text-center hover:scale-110 transition-transform duration-300 cursor-pointer">
+                <div className="text-4xl font-bold text-primary bg-white dark:bg-gray-700 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-2 shadow-lg">{years.count}+</div>
+                <div className="text-gray-600 dark:text-gray-400 mt-2 font-semibold">Years</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
