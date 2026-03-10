@@ -1,7 +1,7 @@
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import partner1 from '../assets/partner1.png';
-import partner2 from '../assets/partne2.jpg';
+import partner2 from '../assets/partner2.jpg';
 import partner3 from '../assets/partner3.jpg';
 
 const Partners: React.FC = () => {
