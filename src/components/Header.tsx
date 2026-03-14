@@ -8,21 +8,17 @@ const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    console.log('Dark mode:', isDark);
     if (isDark) {
       document.documentElement.classList.add('dark');
-      console.log('Added dark class');
     } else {
       document.documentElement.classList.remove('dark');
-      console.log('Removed dark class');
     }
   }, [isDark]);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      
-      const sections = ['home', 'about', 'programs', 'impact', 'contact'];
+      const sections = ['home', 'about', 'programs', 'impact', 'team', 'gallery', 'blog', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -33,7 +29,6 @@ const Header: React.FC = () => {
       });
       if (current) setActiveSection(current);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -43,7 +38,10 @@ const Header: React.FC = () => {
     { href: '#about', label: 'About' },
     { href: '#programs', label: 'Programs' },
     { href: '#impact', label: 'Impact' },
-    { href: '#contact', label: 'Contact' }
+    { href: '#team', label: 'Team' },
+    { href: '#gallery', label: 'Gallery' },
+    { href: '#blog', label: 'Blog' },
+    { href: '#contact', label: 'Contact' },
   ];
 
   return (
@@ -56,7 +54,7 @@ const Header: React.FC = () => {
             <img src={logo} alt="Ineza Foundation" className="h-12 w-auto" />
             <span className="text-xl font-bold text-primary dark:text-accent">INEZA FOUNDATION</span>
           </div>
-          
+
           <div className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => (
               <a
@@ -77,7 +75,7 @@ const Header: React.FC = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <button 
+            <button
               onClick={() => setIsDark(!isDark)}
               className="text-2xl p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-110 transition-all duration-300"
               aria-label="Toggle dark mode"
@@ -94,7 +92,7 @@ const Header: React.FC = () => {
             </button>
           </div>
 
-          <button 
+          <button
             className="md:hidden text-gray-700 dark:text-gray-300 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
@@ -125,7 +123,7 @@ const Header: React.FC = () => {
                 {link.label}
               </a>
             ))}
-            <button 
+            <button
               onClick={() => setIsDark(!isDark)}
               className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition font-medium"
             >
