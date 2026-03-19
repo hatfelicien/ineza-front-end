@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Footer: React.FC = () => {
@@ -40,6 +41,9 @@ const Footer: React.FC = () => {
               <li><a href="#programs" className="text-gray-400 hover:text-accent hover:translate-x-2 transition-all duration-300 inline-block">Our Programs</a></li>
               <li><a href="#impact" className="text-gray-400 hover:text-accent hover:translate-x-2 transition-all duration-300 inline-block">Our Impact</a></li>
               <li><a href="#contact" className="text-gray-400 hover:text-accent hover:translate-x-2 transition-all duration-300 inline-block">Contact Us</a></li>
+              <li><Link to="/team" className="text-gray-400 hover:text-accent hover:translate-x-2 transition-all duration-300 inline-block">Our Team</Link></li>
+              <li><Link to="/gallery" className="text-gray-400 hover:text-accent hover:translate-x-2 transition-all duration-300 inline-block">Gallery</Link></li>
+              <li><Link to="/blog" className="text-gray-400 hover:text-accent hover:translate-x-2 transition-all duration-300 inline-block">Blog</Link></li>
             </ul>
           </div>
 

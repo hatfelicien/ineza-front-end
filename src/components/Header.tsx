@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
 
   useEffect(() => {
     if (isDark) {
@@ -18,30 +20,42 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      const sections = ['home', 'about', 'programs', 'impact', 'team', 'gallery', 'blog', 'contact'];
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
+      if (location.pathname === '/') {
+        const sections = ['home', 'about', 'programs', 'impact', 'contact'];
+        const current = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 100 && rect.bottom >= 100;
+          }
+          return false;
+        });
+        if (current) setActiveSection(current);
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location]);
 
-  const navLinks = [
+  useEffect(() => {
+    setIsMenuOpen(false);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const isHome = location.pathname === '/';
+
+  const homeLinks = [
     { href: '#home', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#programs', label: 'Programs' },
     { href: '#impact', label: 'Impact' },
-    { href: '#team', label: 'Team' },
-    { href: '#gallery', label: 'Gallery' },
-    { href: '#blog', label: 'Blog' },
     { href: '#contact', label: 'Contact' },
+  ];
+
+  const pageLinks = [
+    { to: '/team', label: 'Team' },
+    { to: '/gallery', label: 'Gallery' },
+    { to: '/blog', label: 'Blog' },
   ];
 
   return (
@@ -50,35 +64,70 @@ const Header: React.FC = () => {
     }`}>
       <nav className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3 hover:scale-105 transition-transform cursor-pointer">
+
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 hover:scale-105 transition-transform">
             <img src={logo} alt="Ineza Foundation" className="h-12 w-auto" />
             <span className="text-xl font-bold text-primary dark:text-accent">INEZA FOUNDATION</span>
-          </div>
+          </Link>
 
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+            {/* Home anchor links */}
+            {homeLinks.map(link => (
+              isHome ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 relative group ${
+                    activeSection === link.href.slice(1)
+                      ? 'text-primary dark:text-accent bg-primary/10 dark:bg-accent/10'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-gray-800'
+                  }`}
+                >
+                  {link.label}
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary dark:bg-accent transform origin-left transition-transform duration-300 ${
+                    activeSection === link.href.slice(1) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`}></span>
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={`/${link.href}`}
+                  className="px-4 py-2 rounded-lg font-medium transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  {link.label}
+                </Link>
+              )
+            ))}
+
+            {/* Divider */}
+            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-2"></div>
+
+            {/* Page links */}
+            {pageLinks.map(link => (
+              <Link
+                key={link.to}
+                to={link.to}
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 relative group ${
-                  activeSection === link.href.slice(1)
+                  location.pathname === link.to
                     ? 'text-primary dark:text-accent bg-primary/10 dark:bg-accent/10'
                     : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent hover:bg-gray-100 dark:hover:bg-gray-800'
                 }`}
               >
                 {link.label}
                 <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary dark:bg-accent transform origin-left transition-transform duration-300 ${
-                  activeSection === link.href.slice(1) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  location.pathname === link.to ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 }`}></span>
-              </a>
+              </Link>
             ))}
           </div>
 
+          {/* Right side */}
           <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={() => setIsDark(!isDark)}
               className="text-2xl p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-110 transition-all duration-300"
-              aria-label="Toggle dark mode"
             >
               {isDark ? '☀️' : '🌙'}
             </button>
@@ -92,10 +141,10 @@ const Header: React.FC = () => {
             </button>
           </div>
 
+          {/* Mobile menu button */}
           <button
             className="md:hidden text-gray-700 dark:text-gray-300 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
@@ -107,21 +156,44 @@ const Header: React.FC = () => {
           </button>
         </div>
 
+        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 space-y-2 pb-4 animate-fade-in">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+            {homeLinks.map(link => (
+              isHome ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-4 py-3 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  to="/"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-4 py-3 rounded-lg font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                >
+                  {link.label}
+                </Link>
+              )
+            ))}
+            <div className="border-t border-gray-100 dark:border-gray-700 my-2"></div>
+            {pageLinks.map(link => (
+              <Link
+                key={link.to}
+                to={link.to}
                 onClick={() => setIsMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
-                  activeSection === link.href.slice(1)
-                    ? 'text-primary dark:text-accent bg-primary/10 dark:bg-accent/10'
+                className={`block px-4 py-3 rounded-lg font-medium transition ${
+                  location.pathname === link.to
+                    ? 'text-primary dark:text-accent bg-primary/10'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <button
               onClick={() => setIsDark(!isDark)}
@@ -129,7 +201,7 @@ const Header: React.FC = () => {
             >
               {isDark ? '☀️ Light Mode' : '🌙 Dark Mode'}
             </button>
-            <button className="w-full bg-orange hover:bg-brown text-white px-6 py-3 rounded-full flex items-center justify-center gap-3 hover:shadow-xl transition-all duration-300 font-bold">
+            <button className="w-full bg-orange hover:bg-brown text-white px-6 py-3 rounded-full flex items-center justify-center gap-3 transition-all duration-300 font-bold">
               <span>Donate</span>
               <div className="bg-white rounded-full w-8 h-8 flex items-center justify-center">
                 <svg className="w-5 h-5 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
