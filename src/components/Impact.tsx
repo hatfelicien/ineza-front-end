@@ -46,11 +46,11 @@ const Impact: React.FC = () => {
   }, [isVisible]);
 
   return (
-    <section id="impact" className="py-14 sm:py-24 bg-primary dark:bg-gray-900 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-36 sm:w-72 h-36 sm:h-72 bg-orange/10 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+    <section id="impact" className="py-14 sm:py-24 bg-primary dark:bg-gray-900 relative" style={{ overflow: 'hidden' }}>
+      <div className="absolute top-0 right-0 w-48 sm:w-72 h-48 sm:h-72 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-36 sm:w-56 h-36 sm:h-56 bg-orange/10 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-      <div className="w-full px-4 sm:px-6 relative z-10">
+      <div className="relative z-10 w-full px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
 
         <div className={`text-center mb-10 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

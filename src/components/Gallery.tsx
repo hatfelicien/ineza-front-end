@@ -64,38 +64,29 @@ const Gallery: React.FC = () => {
   const filtered = activeCategory === 'All' ? events : events.filter(e => e.category === activeCategory);
 
   return (
-    <section id="gallery" className="min-h-screen py-20 sm:py-32 bg-gray-50 dark:bg-gray-800 bg-pattern relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6">
-
-        {/* Header */}
-        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Gallery</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+    <section id="gallery" className="py-14 sm:py-24 bg-gray-50 dark:bg-gray-800">
+      <div className="w-full px-4 sm:px-6 max-w-6xl mx-auto">
+        <div className={`text-center mb-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-3">Gallery</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-4" />
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             Explore our events and the moments that define our mission
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
           {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => { setActiveCategory(cat); setSelectedEvent(null); }}
-              className={`px-8 py-3 rounded-full font-semibold capitalize transition-all duration-300 hover:scale-105 ${
-                activeCategory === cat
-                  ? 'bg-primary text-white shadow-lg scale-105'
-                  : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary/10 border-2 border-gray-200 dark:border-gray-600'
-              }`}
-            >
+            <button key={cat} onClick={() => { setActiveCategory(cat); setSelectedEvent(null); }}
+              className={`px-4 sm:px-6 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 ${
+                activeCategory === cat ? 'bg-primary text-white shadow-lg' : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600'
+              }`}>
               {cat}
             </button>
           ))}
         </div>
 
-        {/* Event Collections Grid */}
         {!selectedEvent && (
-          <div ref={ref} className="grid sm:grid-cols-2 gap-6 sm:gap-8">
+          <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {filtered.map((event, index) => (
               <div
                 key={event.id}
@@ -106,7 +97,7 @@ const Gallery: React.FC = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 {/* Cover Image */}
-                <div className="relative h-72 overflow-hidden">
+                <div className="relative h-48 sm:h-64 overflow-hidden">
                   <img
                     src={event.cover}
                     alt={event.title}
