@@ -5,15 +5,14 @@ import logo from '../assets/logo.png';
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 dark:bg-black text-white">
-      <div className="container mx-auto px-4 sm:px-6 py-10 sm:py-12">
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-          {/* Logo and Description */}
-          <div className="sm:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Ineza Foundation" className="h-12 sm:h-16 w-auto" />
-              <span className="text-lg sm:text-2xl font-bold">INEZA FOUNDATION</span>
+      <div className="container mx-auto px-3 sm:px-6 py-10 sm:py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8">
+          <div className="col-span-2">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4">
+              <img src={logo} alt="Ineza Foundation" className="h-10 sm:h-16 w-auto" />
+              <span className="text-base sm:text-2xl font-bold leading-tight">INEZA<br className="sm:hidden" /> FOUNDATION</span>
             </div>
-            <p className="text-gray-400 leading-relaxed mb-4">
+            <p className="text-gray-400 leading-relaxed mb-4 text-sm sm:text-base">
               Empowering communities through education and sustainable development. Building a brighter future for children and families in Rwanda.
             </p>
             <div className="flex space-x-4">
@@ -61,11 +60,11 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-center md:text-left">
+        <div className="border-t border-gray-800 pt-6 sm:pt-8 flex flex-col gap-3 sm:gap-4">
+          <p className="text-gray-400 text-center text-sm">
             &copy; {new Date().getFullYear()} Ineza Foundation. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm">
             <a href="#" className="text-gray-400 hover:text-accent transition">Privacy Policy</a>
             <a href="#" className="text-gray-400 hover:text-accent transition">Terms of Service</a>
             <a href="#" className="text-gray-400 hover:text-accent transition">Cookie Policy</a>

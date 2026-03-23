@@ -68,20 +68,20 @@ const Impact: React.FC = () => {
         </div>
 
         {/* Stat Cards */}
-        <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-20">
+        <div ref={ref} className="grid grid-cols-2 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-12 sm:mb-20">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className={`group relative bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-center hover:bg-white/20 hover:-translate-y-2 transition-all duration-500 cursor-default ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              className={`group relative bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/20 hover:-translate-y-2 transition-all duration-500 cursor-default ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               style={{ transitionDelay: `${i * 120}ms` }}
             >
-              <div className={`w-12 h-12 sm:w-16 sm:h-16 ${stat.color} rounded-xl sm:rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-3 sm:mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-10 h-10 sm:w-16 sm:h-16 ${stat.color} rounded-xl sm:rounded-2xl flex items-center justify-center text-xl sm:text-3xl mx-auto mb-2 sm:mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                 {stat.icon}
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-1 sm:mb-2 tabular-nums">
+              <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-1 sm:mb-2 tabular-nums">
                 {counts[i].count.toLocaleString()}{stat.suffix}
               </div>
-              <div className="text-green-200 font-semibold text-xs sm:text-sm uppercase tracking-wider leading-tight">{stat.label}</div>
+              <div className="text-green-200 font-semibold text-xs uppercase tracking-wide leading-tight">{stat.label}</div>
               <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 ${stat.color} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
             </div>
           ))}

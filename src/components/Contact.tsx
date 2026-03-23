@@ -8,9 +8,9 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-16 sm:py-20 bg-gray-50 dark:bg-gray-800 bg-waves relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
         <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Get In Touch</h2>
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Get In Touch</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Join us in making a difference. Reach out to learn more about our work or get involved.
           </p>
         </div>
@@ -51,8 +51,8 @@ const Contact: React.FC = () => {
 
           {/* Contact Form */}
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}>
-            <form className="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-2xl">
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Send us a Message</h3>
+            <form className="bg-white dark:bg-gray-700 p-5 sm:p-8 rounded-2xl shadow-2xl">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-5 sm:mb-6">Send us a Message</h3>
               
               <div className="space-y-4">
                 <input 

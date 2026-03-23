@@ -66,9 +66,9 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 hover:scale-105 transition-transform min-w-0">
-            <img src={logo} alt="Ineza Foundation" className="h-9 sm:h-12 w-auto flex-shrink-0" />
-            <span className="text-base sm:text-xl font-bold text-primary dark:text-accent truncate">INEZA FOUNDATION</span>
+          <Link to="/" className="flex items-center gap-2 hover:scale-105 transition-transform min-w-0">
+            <img src={logo} alt="Ineza Foundation" className="h-8 sm:h-12 w-auto flex-shrink-0" />
+            <span className="text-xs xs:text-sm sm:text-xl font-bold text-primary dark:text-accent leading-tight">INEZA<br className="xs:hidden" /> FOUNDATION</span>
           </Link>
 
           {/* Desktop Nav */}
