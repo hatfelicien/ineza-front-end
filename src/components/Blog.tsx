@@ -220,11 +220,6 @@ const Blog: React.FC = () => {
             Stories, updates and insights from our work across Rwanda
           </p>
         </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Stories, updates and insights from our work across Rwanda
-          </p>
-        </div>
 
         {!selectedPost && (
           <>
