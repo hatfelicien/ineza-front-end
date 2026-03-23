@@ -46,43 +46,38 @@ const Impact: React.FC = () => {
   }, [isVisible]);
 
   return (
-    <section id="impact" className="py-20 sm:py-32 bg-primary dark:bg-gray-900 relative overflow-hidden">
-
-      {/* Decorative background circles */}
+    <section id="impact" className="py-14 sm:py-24 bg-primary dark:bg-gray-900 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-36 sm:w-72 h-36 sm:h-72 bg-orange/10 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 w-72 sm:w-[600px] h-72 sm:h-[600px] bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="w-full px-4 sm:px-6 relative z-10">
+        <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
-        <div className={`text-center mb-12 sm:mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block bg-accent/20 text-accent text-xs sm:text-sm font-bold px-4 sm:px-5 py-2 rounded-full uppercase tracking-widest mb-5">
+        <div className={`text-center mb-10 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <span className="inline-block bg-accent/20 text-accent text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
             Our Impact
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Changing Lives,<br />Building Futures</h2>
-          <div className="w-20 h-1 bg-accent mx-auto mb-6 rounded-full" />
-          <p className="text-base sm:text-lg text-green-100 max-w-2xl mx-auto leading-relaxed px-2">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Changing Lives,<br />Building Futures</h2>
+          <div className="w-16 h-1 bg-accent mx-auto mb-4 rounded-full" />
+          <p className="text-sm sm:text-base text-green-100 max-w-2xl mx-auto leading-relaxed">
             Every number represents a real person whose life has been transformed through our programs across Rwanda.
           </p>
         </div>
 
-        {/* Stat Cards */}
-        <div ref={ref} className="grid grid-cols-2 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-12 sm:mb-20">
+        <div ref={ref} className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 mb-10 sm:mb-16">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className={`group relative bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/20 hover:-translate-y-2 transition-all duration-500 cursor-default ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              className={`group relative bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-3 sm:p-6 text-center hover:bg-white/20 transition-all duration-500 cursor-default ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
               style={{ transitionDelay: `${i * 120}ms` }}
             >
-              <div className={`w-10 h-10 sm:w-16 sm:h-16 ${stat.color} rounded-xl sm:rounded-2xl flex items-center justify-center text-xl sm:text-3xl mx-auto mb-2 sm:mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-9 h-9 sm:w-14 sm:h-14 ${stat.color} rounded-xl flex items-center justify-center text-lg sm:text-2xl mx-auto mb-2 sm:mb-4 shadow-lg`}>
                 {stat.icon}
               </div>
-              <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-1 sm:mb-2 tabular-nums">
+              <div className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white mb-1 tabular-nums leading-tight">
                 {counts[i].count.toLocaleString()}{stat.suffix}
               </div>
-              <div className="text-green-200 font-semibold text-xs uppercase tracking-wide leading-tight">{stat.label}</div>
-              <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 ${stat.color} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+              <div className="text-green-200 font-medium text-[10px] sm:text-xs uppercase tracking-wide leading-tight">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -137,6 +132,7 @@ const Impact: React.FC = () => {
             ))}
           </div>
 
+        </div>
         </div>
       </div>
     </section>

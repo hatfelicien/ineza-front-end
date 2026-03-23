@@ -16,23 +16,19 @@ const Newsletter: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 bg-primary dark:bg-gray-900 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-32 -translate-y-32"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-48 translate-y-48"></div>
-      <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-accent/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+    <section className="py-14 sm:py-20 bg-primary dark:bg-gray-900 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-48 h-48 bg-white/5 rounded-full -translate-x-24 -translate-y-24"></div>
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/5 rounded-full translate-x-32 translate-y-32"></div>
 
-      <div ref={ref} className="container mx-auto px-6 relative z-10">
+      <div ref={ref} className="w-full px-4 sm:px-6 relative z-10">
         <div className={`max-w-3xl mx-auto text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-full mb-6">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white/10 rounded-full mb-5">
+            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Stay in the Loop</h2>
-          <p className="text-white/80 text-base sm:text-xl mb-8 sm:mb-10 leading-relaxed px-2">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-3">Stay in the Loop</h2>
+          <p className="text-white/80 text-sm sm:text-lg mb-8 leading-relaxed">
             Subscribe to our newsletter and be the first to hear about our programs, impact stories, and upcoming events.
           </p>
 
