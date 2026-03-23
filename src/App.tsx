@@ -7,6 +7,7 @@ import About from './components/About';
 import Programs from './components/Programs';
 import Partners from './components/Partners';
 import Impact from './components/Impact';
+import Newsletter from './components/Newsletter';
 import Contact from './components/Contact';
 import Team from './components/Team';
 import Gallery from './components/Gallery';
@@ -19,6 +20,7 @@ const Home: React.FC = () => (
     <Programs />
     <Partners />
     <Impact />
+    <Newsletter />
     <Contact />
   </>
 );
