@@ -46,17 +46,17 @@ const Team: React.FC = () => {
   const [flipped, setFlipped] = useState<number | null>(null);
 
   return (
-    <section id="team" className="min-h-screen py-32 bg-white dark:bg-gray-900 bg-dots relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-5xl font-bold text-gray-800 dark:text-white mb-6">Our Team</h2>
+    <section id="team" className="min-h-screen py-20 sm:py-32 bg-white dark:bg-gray-900 bg-dots relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Our Team</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Meet the passionate individuals dedicated to transforming lives across Rwanda
           </p>
         </div>
 
-        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
           {teamMembers.map((member, index) => (
             <div
               key={index}

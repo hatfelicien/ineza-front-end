@@ -16,7 +16,7 @@ const Newsletter: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-primary dark:bg-gray-900 relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-primary dark:bg-gray-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-32 -translate-y-32"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-48 translate-y-48"></div>
@@ -31,8 +31,8 @@ const Newsletter: React.FC = () => {
             </svg>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Stay in the Loop</h2>
-          <p className="text-white/80 text-xl mb-10 leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Stay in the Loop</h2>
+          <p className="text-white/80 text-base sm:text-xl mb-8 sm:mb-10 leading-relaxed px-2">
             Subscribe to our newsletter and be the first to hear about our programs, impact stories, and upcoming events.
           </p>
 
@@ -49,8 +49,8 @@ const Newsletter: React.FC = () => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
-              <div className="grid md:grid-cols-2 gap-4 mb-4">
+            <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 sm:p-8">
+              <div className="grid sm:grid-cols-2 gap-4 mb-4">
                 <input
                   type="text"
                   placeholder="Your Name"

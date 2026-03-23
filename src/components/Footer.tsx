@@ -5,13 +5,13 @@ import logo from '../assets/logo.png';
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 dark:bg-black text-white">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+      <div className="container mx-auto px-4 sm:px-6 py-10 sm:py-12">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Logo and Description */}
-          <div className="md:col-span-2">
+          <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img src={logo} alt="Ineza Foundation" className="h-16 w-auto" />
-              <span className="text-2xl font-bold">INEZA FOUNDATION</span>
+              <img src={logo} alt="Ineza Foundation" className="h-12 sm:h-16 w-auto" />
+              <span className="text-lg sm:text-2xl font-bold">INEZA FOUNDATION</span>
             </div>
             <p className="text-gray-400 leading-relaxed mb-4">
               Empowering communities through education and sustainable development. Building a brighter future for children and families in Rwanda.

@@ -38,23 +38,23 @@ const Programs: React.FC = () => {
   ];
 
   return (
-    <section id="programs" className="py-20 bg-white dark:bg-gray-900 bg-dots relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-5xl font-bold text-gray-800 dark:text-white mb-6">Our Programs</h2>
+    <section id="programs" className="py-16 sm:py-20 bg-white dark:bg-gray-900 bg-dots relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Our Programs</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Comprehensive initiatives designed to create lasting impact in communities
           </p>
         </div>
 
-        <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {programs.map((program, index) => (
             <div 
               key={index} 
-              className={`flip-card h-64 transition-all duration-700 ${
+              className={`flip-card h-56 sm:h-64 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
+              }`}}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="flip-card-inner h-full">

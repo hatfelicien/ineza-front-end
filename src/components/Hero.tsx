@@ -8,16 +8,16 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: `url(${heroImage})` }}>
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
-      <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-in-left leading-tight">
+      <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-24 md:py-32 relative z-10">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div className="animate-fade-in-up text-center md:text-left">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slide-in-left leading-tight">
               Empowering Communities Through Education
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-100 animate-fade-in delay-200 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 text-gray-100 animate-fade-in delay-200 leading-relaxed">
               Building a brighter future for children and families in Rwanda through quality education, healthcare, and community development.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in delay-400">
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in delay-400 justify-center md:justify-start">
               <button className="bg-gold text-white px-8 py-3 rounded-full hover:bg-orange hover:scale-105 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
                 Get Involved
               </button>
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
               </button>
             </div>
           </div>
-          <div className="bg-white/30 backdrop-blur-md h-80 rounded-lg flex items-center justify-center animate-fade-in-right hover:scale-105 transition-transform duration-500 border border-white/40 p-8 shadow-2xl">
+          <div className="bg-white/30 backdrop-blur-md h-56 sm:h-72 md:h-80 rounded-lg flex items-center justify-center animate-fade-in-right hover:scale-105 transition-transform duration-500 border border-white/40 p-6 sm:p-8 shadow-2xl mx-auto w-full max-w-sm md:max-w-none">
             <img src={logo} alt="Ineza Foundation Logo" className="w-full h-full object-contain" />
           </div>
         </div>

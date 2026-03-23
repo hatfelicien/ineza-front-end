@@ -62,13 +62,13 @@ const Header: React.FC = () => {
     <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
       scrolled ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg' : 'bg-white dark:bg-gray-900 shadow-md'
     }`}>
-      <nav className="container mx-auto px-6 py-4">
+      <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex justify-between items-center">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 hover:scale-105 transition-transform">
-            <img src={logo} alt="Ineza Foundation" className="h-12 w-auto" />
-            <span className="text-xl font-bold text-primary dark:text-accent">INEZA FOUNDATION</span>
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 hover:scale-105 transition-transform min-w-0">
+            <img src={logo} alt="Ineza Foundation" className="h-9 sm:h-12 w-auto flex-shrink-0" />
+            <span className="text-base sm:text-xl font-bold text-primary dark:text-accent truncate">INEZA FOUNDATION</span>
           </Link>
 
           {/* Desktop Nav */}

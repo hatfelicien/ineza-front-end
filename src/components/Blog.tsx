@@ -11,20 +11,35 @@ import img6 from '../assets/649875733_1496171165461538_4768409416532995933_n.jpg
 interface Comment {
   id: number;
   name: string;
+  role?: string;
   date: string;
   text: string;
   avatar: string;
+  likes?: number;
+  avatarColor?: string;
 }
 
 const initialComments: Record<number, Comment[]> = {
   1: [
-    { id: 1, name: 'Alice M.', date: 'Nov 14, 2024', text: 'This is truly inspiring! Education is the key to everything.', avatar: 'AM' },
-    { id: 2, name: 'Jean P.', date: 'Nov 15, 2024', text: 'Amazing work by the Ineza Foundation. Keep it up!', avatar: 'JP' },
+    { id: 1, name: 'Alice M.', role: 'Teacher, Kigali', date: 'Nov 14, 2024', text: 'This is truly inspiring! Education is the key to everything. I have seen firsthand how access to schooling transforms children\'s lives in our community.', avatar: 'AM', likes: 12, avatarColor: 'bg-accent' },
+    { id: 2, name: 'Jean P.', role: 'Program Volunteer', date: 'Nov 15, 2024', text: 'Amazing work by the Ineza Foundation. The scholarship program changed my cousin\'s life — she is now studying medicine at university. Keep it up!', avatar: 'JP', likes: 8, avatarColor: 'bg-orange' },
   ],
   2: [
-    { id: 1, name: 'Marie K.', date: 'Oct 7, 2024', text: 'Healthcare access is so important. Thank you for this initiative!', avatar: 'MK' },
+    { id: 1, name: 'Marie K.', role: 'Community Health Worker', date: 'Oct 7, 2024', text: 'Healthcare access is so important. Thank you for this initiative! The mobile medical units reached villages that had never seen a doctor before.', avatar: 'MK', likes: 15, avatarColor: 'bg-primary' },
   ],
-  3: [], 4: [], 5: [], 6: [],
+  3: [
+    {
+      id: 1,
+      name: 'David N.',
+      role: 'Cohort 2 Graduate · Entrepreneur',
+      date: 'Sep 20, 2024',
+      text: 'I graduated from the second cohort and launched my agri-tech startup just six months later. The mentorship and business training I received were world-class. This program doesn\'t just teach skills — it builds confidence and opens doors. I now employ 7 people from my village. Highly recommend to every young Rwandan with a dream!',
+      avatar: 'DN',
+      likes: 34,
+      avatarColor: 'bg-secondary',
+    },
+  ],
+  4: [], 5: [], 6: [],
 };
 
 const posts = [
@@ -89,6 +104,8 @@ const CommentSection: React.FC<{ postId: number }> = ({ postId }) => {
       date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
       text,
       avatar: name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2),
+      likes: 0,
+      avatarColor: 'bg-primary',
     };
     setComments([...comments, newComment]);
     setName('');
@@ -114,25 +131,36 @@ const CommentSection: React.FC<{ postId: number }> = ({ postId }) => {
         {comments.map((comment, index) => (
           <div
             key={comment.id}
-            className="flex gap-4 animate-fade-in-up bg-gray-50 dark:bg-gray-700 p-6 rounded-2xl"
+            className="flex gap-4 animate-fade-in-up bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300"
             style={{ animationDelay: `${index * 50}ms` }}
           >
-            <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div className={`flex-shrink-0 w-12 h-12 ${comment.avatarColor || 'bg-primary'} rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md`}>
               {comment.avatar}
             </div>
-            <div className="flex-1">
-              <div className="flex items-center justify-between mb-2">
-                <h4 className="font-bold text-gray-800 dark:text-white">{comment.name}</h4>
-                <span className="text-xs text-gray-400">{comment.date}</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-start justify-between gap-2 mb-1">
+                <div>
+                  <h4 className="font-bold text-gray-800 dark:text-white leading-tight">{comment.name}</h4>
+                  {comment.role && (
+                    <span className="text-xs text-primary dark:text-accent font-medium">{comment.role}</span>
+                  )}
+                </div>
+                <span className="text-xs text-gray-400 whitespace-nowrap mt-0.5">{comment.date}</span>
               </div>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{comment.text}</p>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mt-2 mb-3">{comment.text}</p>
+              {typeof comment.likes === 'number' && (
+                <div className="flex items-center gap-1.5 text-xs text-gray-400">
+                  <span className="text-base">👍</span>
+                  <span>{comment.likes} {comment.likes === 1 ? 'like' : 'likes'}</span>
+                </div>
+              )}
             </div>
           </div>
         ))}
       </div>
 
       {/* Comment Form */}
-      <div className="bg-gray-50 dark:bg-gray-700 p-8 rounded-2xl">
+      <div className="bg-gray-50 dark:bg-gray-700 p-5 sm:p-8 rounded-2xl">
         <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-6">Leave a Comment</h4>
         {submitted && (
           <div className="bg-accent/20 text-primary dark:text-accent border border-accent/30 px-4 py-3 rounded-lg mb-6 font-medium">
@@ -182,11 +210,11 @@ const Blog: React.FC = () => {
   });
 
   return (
-    <section id="blog" className="min-h-screen py-32 bg-white dark:bg-gray-900 bg-dots relative overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="blog" className="min-h-screen py-20 sm:py-32 bg-white dark:bg-gray-900 bg-dots relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
 
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-5xl font-bold text-gray-800 dark:text-white mb-6">Blog & News</h2>
+        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Blog & News</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Stories, updates and insights from our work across Rwanda
@@ -225,12 +253,12 @@ const Blog: React.FC = () => {
                 className={`group relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               >
                 <div className="grid md:grid-cols-2">
-                  <div className="relative h-72 md:h-auto overflow-hidden">
+                  <div className="relative h-56 sm:h-72 md:h-auto overflow-hidden">
                     <img src={filtered[0].image} alt={filtered[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
-                  <div className="bg-white dark:bg-gray-800 p-10 flex flex-col justify-center">
+                  <div className="bg-white dark:bg-gray-800 p-6 sm:p-10 flex flex-col justify-center">
                     <span className="bg-orange/10 text-orange text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider w-fit mb-4">{filtered[0].category}</span>
-                    <h3 className="text-3xl font-bold text-gray-800 dark:text-white mb-4 group-hover:text-primary transition-colors">{filtered[0].title}</h3>
+                    <h3 className="text-xl sm:text-3xl font-bold text-gray-800 dark:text-white mb-4 group-hover:text-primary transition-colors">{filtered[0].title}</h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">{filtered[0].excerpt}</p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
@@ -247,7 +275,7 @@ const Blog: React.FC = () => {
               </div>
             )}
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filtered.slice(1).map((post, index) => (
                 <div key={post.id} onClick={() => setSelectedPost(post)}
                   className={`group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl cursor-pointer transition-all duration-500 hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
@@ -286,7 +314,7 @@ const Blog: React.FC = () => {
         {selectedPost && (
           <div className="max-w-4xl mx-auto animate-fade-in-up">
             <button onClick={() => setSelectedPost(null)}
-              className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full hover:bg-accent transition-all duration-300 font-semibold hover:scale-105 mb-10"
+              className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-full hover:bg-accent transition-all duration-300 font-semibold hover:scale-105 mb-8 sm:mb-10"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -295,17 +323,17 @@ const Blog: React.FC = () => {
             </button>
 
             <div className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl">
-              <div className="relative h-96 overflow-hidden">
+              <div className="relative h-56 sm:h-72 md:h-96 overflow-hidden">
                 <img src={selectedPost.image} alt={selectedPost.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-10">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6 sm:p-10">
                   <div>
                     <span className="bg-orange text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">{selectedPost.category}</span>
-                    <h1 className="text-4xl font-bold text-white leading-tight">{selectedPost.title}</h1>
+                    <h1 className="text-2xl sm:text-4xl font-bold text-white leading-tight">{selectedPost.title}</h1>
                   </div>
                 </div>
               </div>
 
-              <div className="p-10">
+              <div className="p-5 sm:p-10">
                 <div className="flex items-center justify-between mb-8 pb-8 border-b border-gray-100 dark:border-gray-700">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">IF</div>

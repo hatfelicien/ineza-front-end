@@ -17,10 +17,10 @@ const Partners: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-5xl font-bold text-gray-800 dark:text-white mb-6">Our Partners</h2>
+    <section className="py-16 sm:py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div ref={ref} className={`text-center mb-10 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Our Partners</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Working together to create lasting change in communities
@@ -30,9 +30,8 @@ const Partners: React.FC = () => {
         <div className="relative overflow-hidden">
           <div className="flex animate-scroll">
             {partners.concat(partners).map((partner, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-64 mx-8 bg-gray-50 dark:bg-gray-800 rounded-lg p-6 flex items-center justify-center hover:scale-110 transition-transform duration-300"
+              <div key={index}
+                className="flex-shrink-0 w-40 sm:w-64 mx-4 sm:mx-8 bg-gray-50 dark:bg-gray-800 rounded-lg p-4 sm:p-6 flex items-center justify-center hover:scale-110 transition-transform duration-300"
               >
                 <img
                   src={partner.logo}

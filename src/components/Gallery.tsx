@@ -64,12 +64,12 @@ const Gallery: React.FC = () => {
   const filtered = activeCategory === 'All' ? events : events.filter(e => e.category === activeCategory);
 
   return (
-    <section id="gallery" className="min-h-screen py-32 bg-gray-50 dark:bg-gray-800 bg-pattern relative overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="gallery" className="min-h-screen py-20 sm:py-32 bg-gray-50 dark:bg-gray-800 bg-pattern relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
 
         {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-5xl font-bold text-gray-800 dark:text-white mb-6">Gallery</h2>
+        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">Gallery</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6"></div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Explore our events and the moments that define our mission
@@ -95,7 +95,7 @@ const Gallery: React.FC = () => {
 
         {/* Event Collections Grid */}
         {!selectedEvent && (
-          <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div ref={ref} className="grid sm:grid-cols-2 gap-6 sm:gap-8">
             {filtered.map((event, index) => (
               <div
                 key={event.id}
@@ -170,10 +170,10 @@ const Gallery: React.FC = () => {
         {selectedEvent && (
           <div className="animate-fade-in-up">
             {/* Back Button & Event Info */}
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-8">
               <button
                 onClick={() => setSelectedEvent(null)}
-                className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full hover:bg-accent transition-all duration-300 font-semibold hover:scale-105"
+                className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-full hover:bg-accent transition-all duration-300 font-semibold hover:scale-105 w-fit"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -181,13 +181,13 @@ const Gallery: React.FC = () => {
                 Back to Collections
               </button>
               <div>
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{selectedEvent.title}</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">{selectedEvent.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm">{selectedEvent.date} · {selectedEvent.photos.length} Photos</p>
               </div>
             </div>
 
             {/* Photos Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {selectedEvent.photos.map((photo, index) => (
                 <div
                   key={index}
