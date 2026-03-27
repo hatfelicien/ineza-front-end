@@ -45,7 +45,7 @@ const About: React.FC = () => {
                 { count: years.count, label: 'Years' },
               ].map(({ count, label }) => (
                 <div key={label} className="text-center">
-                  <div className="text-base sm:text-2xl font-bold text-primary bg-white dark:bg-gray-700 rounded-full w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center mx-auto shadow-lg">
+                  <div className="text-base sm:text-2xl font-bold text-primary dark:text-white bg-white dark:bg-gray-700 rounded-full w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center mx-auto shadow-lg">
                     {count}+
                   </div>
                   <div className="text-gray-600 dark:text-gray-400 mt-2 font-semibold text-xs sm:text-sm">{label}</div>

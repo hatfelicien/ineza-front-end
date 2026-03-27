@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-import img1 from '../assets/646562610_1494701692275152_1413279718664048268_n.jpg';
-import img2 from '../assets/647195619_1493958029016185_6351033761114794389_n.jpg';
-import img3 from '../assets/649269831_1446969253543406_4918276034020187795_n.jpg';
-import img4 from '../assets/649500685_1495990485479606_449884561961379105_n.jpg';
-import img5 from '../assets/649633154_1495297505548904_8205040246101650319_n.jpg';
-import img6 from '../assets/649875733_1496171165461538_4768409416532995933_n.jpg';
-import img7 from '../assets/650324191_1499405755138079_6659901836972230176_n.jpg';
-import img8 from '../assets/650698946_1498224405256214_4087537440083533_n.jpg';
-import img9 from '../assets/651173732_1499165811828740_3137391731481315054_n.jpg';
-import img10 from '../assets/651679395_122232618968100927_8440901709105372126_n.jpg';
-import img11 from '../assets/652307808_866272139794459_2762522930739570475_n.jpg';
-import img12 from '../assets/652379565_2104648810331458_3997499678761705759_n.jpg';
+import img1 from '../assets/imgedu.jpg';
+import img2 from '../assets/imgedu1.jpg';
+import img3 from '../assets/imgedu2.jpg';
+import img4 from '../assets/imgedu3.jpg';
+import img5 from '../assets/imgedu4.jpg';
+import img6 from '../assets/imgread.jpg';
+import img7 from '../assets/imgread1.jpg';
+import img8 from '../assets/imgread2.jpg';
+import img9 from '../assets/imgread3.jpg';
+import img10 from '../assets/imgread4.jpg';
+import img11 from '../assets/imgread5.jpg';
+import img12 from '../assets/imgread6.jpg';
 
 const events = [
   {

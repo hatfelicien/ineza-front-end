@@ -1,5 +1,12 @@
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
+
+const contactInfo = [
+  { icon: <FaMapMarkerAlt className="w-5 h-5 text-primary" />, title: 'Visit Us', text: 'Kigali, Rwanda' },
+  { icon: <FaEnvelope className="w-5 h-5 text-primary" />, title: 'Email Us', text: 'info@inezafoundation.org' },
+  { icon: <FaPhoneAlt className="w-5 h-5 text-primary" />, title: 'Call Us', text: '+250 XXX XXX XXX' },
+];
 
 const Contact: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -18,15 +25,12 @@ const Contact: React.FC = () => {
 
         <div ref={ref} className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
 
-          {/* Info cards */}
           <div className={`space-y-3 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            {[
-              { icon: '📍', title: 'Visit Us', text: 'Kigali, Rwanda' },
-              { icon: '📧', title: 'Email Us', text: 'info@inezafoundation.org' },
-              { icon: '📱', title: 'Call Us', text: '+250 XXX XXX XXX' },
-            ].map(({ icon, title, text }) => (
+            {contactInfo.map(({ icon, title, text }) => (
               <div key={title} className="bg-white dark:bg-gray-700 p-4 sm:p-6 rounded-xl shadow-md flex items-center gap-4">
-                <span className="text-2xl sm:text-3xl flex-shrink-0">{icon}</span>
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  {icon}
+                </div>
                 <div className="min-w-0">
                   <h4 className="font-bold text-sm sm:text-base text-gray-800 dark:text-white">{title}</h4>
                   <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm break-all">{text}</p>
@@ -40,7 +44,6 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Form */}
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             <form className="bg-white dark:bg-gray-700 p-4 sm:p-8 rounded-2xl shadow-xl">
               <h3 className="text-base sm:text-xl font-bold text-gray-800 dark:text-white mb-4">Send us a Message</h3>

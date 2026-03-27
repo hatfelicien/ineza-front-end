@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaFacebookF, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 import logo from '../assets/logo.png';
 
 const Footer: React.FC = () => {
@@ -21,11 +22,15 @@ const Footer: React.FC = () => {
                 Empowering communities through education and sustainable development. Building a brighter future for children and families in Rwanda.
               </p>
               <div className="flex gap-3">
-                {['📘','🐦','📷','💼'].map((icon, i) => (
-                  <a key={i} href="#" className="bg-white/10 hover:bg-primary p-2.5 rounded-full hover:scale-110 transition-all duration-300 text-xl">
-                    {icon}
-                  </a>
-                ))}
+                <a href="https://web.facebook.com/InezafoundationRwanda/?_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-primary p-2.5 rounded-full hover:scale-110 transition-all duration-300">
+                  <FaFacebookF className="w-5 h-5" />
+                </a>
+                <a href="https://www.instagram.com/inezafoundation/" target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-primary p-2.5 rounded-full hover:scale-110 transition-all duration-300">
+                  <FaInstagram className="w-5 h-5" />
+                </a>
+                <a href="https://x.com/inezafoundation" target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-primary p-2.5 rounded-full hover:scale-110 transition-all duration-300">
+                  <FaXTwitter className="w-5 h-5" />
+                </a>
               </div>
             </div>
 
@@ -62,7 +67,12 @@ const Footer: React.FC = () => {
               <ul className="space-y-2">
                 {['Donate Now','Volunteer','Partner With Us','Careers','News & Events'].map(l => (
                   <li key={l}>
-                    <a href="#" className="text-gray-400 hover:text-accent hover:translate-x-1 transition-all duration-300 inline-block text-sm">{l}</a>
+                    <a
+                      href={l === 'Donate Now' ? 'https://givebutter.com/jjoyfoundation-ineza-general?gbtid=8c69052705d14c249720f1b0e1f85afa' : '#'}
+                      target={l === 'Donate Now' ? '_blank' : undefined}
+                      rel={l === 'Donate Now' ? 'noopener noreferrer' : undefined}
+                      className="text-gray-400 hover:text-accent hover:translate-x-1 transition-all duration-300 inline-block text-sm"
+                    >{l}</a>
                   </li>
                 ))}
               </ul>

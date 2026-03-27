@@ -19,12 +19,12 @@ const Hero: React.FC = () => {
               Building a brighter future for children and families in Rwanda through quality education, healthcare, and community development.
             </p>
             <div className="flex gap-3 justify-center md:justify-start">
-              <button className="bg-gold text-white px-5 py-2.5 rounded-full font-semibold shadow-lg text-sm hover:bg-orange transition-all duration-300">
+              <a href="https://givebutter.com/jjoyfoundation-ineza-general?gbtid=8c69052705d14c249720f1b0e1f85afa" target="_blank" rel="noopener noreferrer" className="bg-gold text-white px-5 py-2.5 rounded-full font-semibold shadow-lg text-sm hover:bg-orange transition-all duration-300">
                 Get Involved
-              </button>
-              <button className="bg-white text-primary px-5 py-2.5 rounded-full font-semibold shadow-lg text-sm hover:bg-gray-100 transition-all duration-300">
+              </a>
+              <a href="#about" className="bg-white text-primary px-5 py-2.5 rounded-full font-semibold shadow-lg text-sm hover:bg-gray-100 transition-all duration-300">
                 Learn More
-              </button>
+              </a>
             </div>
           </div>
         </div>

@@ -97,14 +97,14 @@ const Header: React.FC = () => {
         </Link>
       ))}
       <div className="pt-1">
-        <button className="w-full bg-orange hover:bg-brown text-white px-4 py-2.5 rounded-full flex items-center justify-center gap-2 transition-all duration-300 font-bold text-sm">
+        <a href="https://givebutter.com/jjoyfoundation-ineza-general?gbtid=8c69052705d14c249720f1b0e1f85afa" target="_blank" rel="noopener noreferrer" className="w-full bg-orange hover:bg-brown text-white px-4 py-2.5 rounded-full flex items-center justify-center gap-2 transition-all duration-300 font-bold text-sm">
           <span>Donate</span>
           <div className="bg-white rounded-full w-6 h-6 flex items-center justify-center">
             <svg className="w-4 h-4 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </div>
-        </button>
+        </a>
       </div>
     </div>,
     document.body
@@ -170,14 +170,14 @@ const Header: React.FC = () => {
                 className="text-xl p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                 {isDark ? '☀️' : '🌙'}
               </button>
-              <button className="bg-orange hover:bg-brown text-white px-4 py-2 rounded-full flex items-center gap-2 hover:shadow-xl hover:scale-105 transition-all duration-300 font-bold text-sm">
+              <a href="https://givebutter.com/jjoyfoundation-ineza-general?gbtid=8c69052705d14c249720f1b0e1f85afa" target="_blank" rel="noopener noreferrer" className="bg-orange hover:bg-brown text-white px-4 py-2 rounded-full flex items-center gap-2 hover:shadow-xl hover:scale-105 transition-all duration-300 font-bold text-sm">
                 <span>Donate</span>
                 <div className="bg-white rounded-full w-6 h-6 flex items-center justify-center">
                   <svg className="w-4 h-4 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
                 </div>
-              </button>
+              </a>
             </div>
 
             {/* Mobile: dark toggle + hamburger */}

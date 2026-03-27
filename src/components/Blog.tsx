@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-import img1 from '../assets/646562610_1494701692275152_1413279718664048268_n.jpg';
-import img2 from '../assets/647195619_1493958029016185_6351033761114794389_n.jpg';
-import img3 from '../assets/649269831_1446969253543406_4918276034020187795_n.jpg';
-import img4 from '../assets/649500685_1495990485479606_449884561961379105_n.jpg';
-import img5 from '../assets/649633154_1495297505548904_8205040246101650319_n.jpg';
-import img6 from '../assets/649875733_1496171165461538_4768409416532995933_n.jpg';
+import img1 from '../assets/imgedu1.jpg';
+import img2 from '../assets/imgedu3.jpg';
+import img3 from '../assets/imgedu2.jpg';
+import img4 from '../assets/imgread1.jpg';
+import img5 from '../assets/imgread2.jpg';
+import img6 from '../assets/imgread3.jpg';
 
 interface Comment {
   id: number;
