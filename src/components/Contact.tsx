@@ -3,9 +3,10 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 
 const contactInfo = [
-  { icon: <FaMapMarkerAlt className="w-5 h-5 text-primary" />, title: 'Visit Us', text: 'Kigali, Rwanda' },
-  { icon: <FaEnvelope className="w-5 h-5 text-primary" />, title: 'Email Us', text: 'info@inezafoundation.org' },
-  { icon: <FaPhoneAlt className="w-5 h-5 text-primary" />, title: 'Call Us', text: '+250 XXX XXX XXX' },
+  { icon: <FaMapMarkerAlt className="w-5 h-5 text-primary" />, title: 'Visit Us', text: 'Kigali, Rwanda, Gasabo' },
+  { icon: <FaEnvelope className="w-5 h-5 text-primary" />, title: 'Email Us', text: 'contact@inezafoundation.org' },
+  { icon: <FaPhoneAlt className="w-5 h-5 text-primary" />, title: 'Call Us', text: '+250 782 060 341 \
++250788634676' },
 ];
 
 const Contact: React.FC = () => {
