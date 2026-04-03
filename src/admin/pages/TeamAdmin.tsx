@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FaTrash, FaEdit, FaPlus, FaTimes } from 'react-icons/fa';
+import React, { useState, useRef } from 'react';
+import { FaTrash, FaEdit, FaPlus, FaTimes, FaCamera } from 'react-icons/fa';
 
 interface Member {
   id: number;
@@ -7,6 +7,7 @@ interface Member {
   role: string;
   email: string;
   department: string;
+  image?: string;
 }
 
 const initialTeam: Member[] = [
@@ -24,10 +25,28 @@ const TeamAdmin: React.FC = () => {
   const [team, setTeam] = useState<Member[]>(initialTeam);
   const [showForm, setShowForm] = useState(false);
   const [editMember, setEditMember] = useState<Member | null>(null);
-  const [form, setForm] = useState({ name: '', role: '', email: '', department: 'Leadership' });
+  const [form, setForm] = useState({ name: '', role: '', email: '', department: 'Leadership', image: '' });
+  const imageInputRef = useRef<HTMLInputElement>(null);
 
-  const openAdd = () => { setForm({ name: '', role: '', email: '', department: 'Leadership' }); setEditMember(null); setShowForm(true); };
-  const openEdit = (m: Member) => { setForm({ name: m.name, role: m.role, email: m.email, department: m.department }); setEditMember(m); setShowForm(true); };
+  const openAdd = () => {
+    setForm({ name: '', role: '', email: '', department: 'Leadership', image: '' });
+    setEditMember(null);
+    setShowForm(true);
+  };
+
+  const openEdit = (m: Member) => {
+    setForm({ name: m.name, role: m.role, email: m.email, department: m.department, image: m.image || '' });
+    setEditMember(m);
+    setShowForm(true);
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => setForm(prev => ({ ...prev, image: ev.target?.result as string }));
+    reader.readAsDataURL(file);
+  };
 
   const handleSave = () => {
     if (!form.name.trim()) return;
@@ -53,9 +72,13 @@ const TeamAdmin: React.FC = () => {
         {team.map(member => (
           <div key={member.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
             <div className="flex items-start justify-between mb-3">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
-                {member.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-              </div>
+              {member.image ? (
+                <img src={member.image} alt={member.name} className="w-14 h-14 rounded-full object-cover border-2 border-primary/20" />
+              ) : (
+                <div className="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg">
+                  {member.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                </div>
+              )}
               <div className="flex gap-1">
                 <button onClick={() => openEdit(member)} className="p-1.5 text-gray-400 hover:text-primary transition">
                   <FaEdit className="w-4 h-4" />
@@ -75,14 +98,39 @@ const TeamAdmin: React.FC = () => {
 
       {showForm && (
         <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center px-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-5">
               <h3 className="font-bold text-gray-800 text-lg">{editMember ? 'Edit Member' : 'Add Member'}</h3>
               <button onClick={() => setShowForm(false)} className="text-gray-400 hover:text-gray-600 transition">
                 <FaTimes className="w-5 h-5" />
               </button>
             </div>
+
             <div className="space-y-4">
+              {/* Image upload */}
+              <div className="flex flex-col items-center">
+                <div className="relative">
+                  {form.image ? (
+                    <img src={form.image} alt="Member" className="w-24 h-24 rounded-full object-cover border-4 border-primary/20" />
+                  ) : (
+                    <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center text-gray-300">
+                      <FaCamera className="w-8 h-8" />
+                    </div>
+                  )}
+                  <label className="absolute bottom-0 right-0 bg-primary text-white p-2 rounded-full cursor-pointer hover:bg-accent transition shadow-md">
+                    <FaCamera className="w-3.5 h-3.5" />
+                    <input ref={imageInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
+                  </label>
+                </div>
+                <p className="text-xs text-gray-400 mt-2">Click camera to upload photo</p>
+                {form.image && (
+                  <button onClick={() => setForm(prev => ({ ...prev, image: '' }))}
+                    className="text-xs text-red-400 hover:text-red-600 mt-1 transition">
+                    Remove photo
+                  </button>
+                )}
+              </div>
+
               {(['name', 'role', 'email'] as const).map(field => (
                 <div key={field}>
                   <label className="block text-sm font-medium text-gray-700 mb-1 capitalize">{field}</label>
@@ -91,6 +139,7 @@ const TeamAdmin: React.FC = () => {
                     placeholder={field.charAt(0).toUpperCase() + field.slice(1)} />
                 </div>
               ))}
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Department</label>
                 <select value={form.department} onChange={e => setForm({ ...form, department: e.target.value })}
@@ -98,6 +147,7 @@ const TeamAdmin: React.FC = () => {
                   {departments.map(d => <option key={d}>{d}</option>)}
                 </select>
               </div>
+
               <div className="flex gap-3 pt-2">
                 <button onClick={() => setShowForm(false)}
                   className="flex-1 py-2.5 border-2 border-gray-200 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 transition">
